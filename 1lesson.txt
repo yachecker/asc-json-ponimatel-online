@@ -1,0 +1,32 @@
+{
+                      "id":"*1",
+                      "subjectid":"-22",
+                      "teacherids":[
+                         "-104"
+                      ],
+                      "groupids":[
+                         "*158"
+                      ],
+                      "classids":[
+                         "*32"
+                      ],
+                      "count":5,
+                      "durationperiods":2,
+                      "classroomidss":[
+                         [
+                            "*73"
+                         ]
+                      ],
+                      "termsdefid":"*3",
+                      "weeksdefid":"*3",
+                      "daysdefid":"*6",
+                      "terms":"1",
+                      "seminargroup":null,
+                      "bell":"",
+                      "studentids":[
+                         
+                      ],
+                      "groupnames":[
+                         "2 группа"
+                      ]
+                   },

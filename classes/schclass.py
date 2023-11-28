@@ -1,28 +1,29 @@
 import sys
 sys.path.append('..')
 from methods import get_primary_data
-from schlesson import SchLesson
+from .schlesson import SchLesson
+from typing import Type, List, Dict
 PRIMARY_DATA = get_primary_data()
 class SchClass:
 
   @staticmethod
-  def name(classname):
+  def name(classname: str) -> 'SchClass':
     class_list = SchClass.get_classes_list()
     for k,v in class_list.items():
       if v == classname:
         return SchClass(k)
     raise Exception(f"Class '{classname}' is not found")
-  def __init__(self, id):
+  def __init__(self, id: str):
     self.id = id
     self.className = SchClass.get_classes_list()[self.id]
   @staticmethod
-  def get_classes_list(write=False):
+  def get_classes_list(write=False) -> dict:
     classesList = PRIMARY_DATA['r']['dbiAccessorRes']['tables'][12]["data_rows"]
     classes = {}
     for className in classesList:
       id = className["id"]
       name = className["name"][:className["name"].find('_')].lower()
-      classes[id] = name 
+      classes[id] = name
     if write:
       with open('./files/classes.txt','w+', encoding='UTF-8') as f:
         f.write(str(classes))
@@ -31,7 +32,7 @@ class SchClass:
     print(f"Class ID: {self.classID}")
     print(f"Class Name: {self.className}")
 
-  def get_lessons(self, write = False):
+  def get_lessons(self, write = False) -> List['SchLesson']:
     lessons = PRIMARY_DATA['r']['dbiAccessorRes']['tables'][18]["data_rows"]
     classLessons = []
     for lesson in lessons:
@@ -42,7 +43,7 @@ class SchClass:
             f.write(str(classLessons))
     return classLessons
 
-  def get_class_id(self):
+  def get_class_id(self) -> str:
       return self.id
 
 # seventh_a = SchClass('*1')

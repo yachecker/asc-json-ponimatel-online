@@ -3,7 +3,7 @@ import pprint
 import os
 if not os.path.exists('files'):
   os.makedirs('files')
-def get_primary_data():
+def get_primary_data() -> dict:
   cookies = {
     'PHPSESSID': 'f2ef8e802dd71a0bbae2d654825973da',
   }
@@ -50,7 +50,7 @@ PRIMARY_DATA = get_primary_data()
 
 
 # i think it s understandable, have a good day
-def jsonPythoner(str):
+def jsonPythoner(str) -> dict | list:
   return eval(str.replace('true','True').replace('false','False').replace('null','None').strip())
 
 
@@ -86,7 +86,6 @@ def get_cards_list(write=False):
       'period':period,
       'day': day,
       'classRoomId': classRoomId,
-      
     })
   if write:
     with open('./files/cards.txt','w+', encoding='UTF-8') as f:

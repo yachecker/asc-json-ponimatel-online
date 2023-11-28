@@ -1,17 +1,19 @@
-import unittest
+
 import sys
-sys.path.append('..')  # Add parent directory to the system path
+sys.path.append('..')
+sys.path.append('./classes')
+import unittest
 from main import parse_timetable
+
 
 
 class TestTimetableParser(unittest.TestCase):
   def test_valid_timetable(self):
     # Call the parse_timetable function (without providing direct input)
-    parsed_timetable = parse_timetable(weekday=1, className='7a', subGroup=1)
+    parsed_timetable = parse_timetable(className='7a', subGroup=1)['Monday']
 
     # Expected output after parsing the timetable internally
-    expected_output = {
-      'Monday':[
+    expected_output = [
         {
           'name': 'Кураторский час',
           'room': '222',
@@ -45,12 +47,10 @@ class TestTimetableParser(unittest.TestCase):
         {
           'name': 'Математика',
           'room': '223',
-          'teacher':'Джубатканов Кушаныш',
+          'teacher':'Джубатканов Куаныш',
           'periods':1
         },
-      ],
-
-    }
+      ]
 
     self.assertEqual(parsed_timetable, expected_output)
 

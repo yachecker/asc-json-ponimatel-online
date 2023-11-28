@@ -1,0 +1,79 @@
+{
+  "id":"1",
+  "bell":"1",
+  "perioddata":{
+     "1":{
+        "starttime":"08:30",
+        "endtime":"09:10",
+        "daydata":{
+           
+        }
+     },
+     "2":{
+        "starttime":"09:15",
+        "endtime":"09:55",
+        "daydata":{
+           
+        }
+     },
+     "3":{
+        "starttime":"10:15",
+        "endtime":"10:55",
+        "daydata":{
+           
+        }
+     },
+     "4":{
+        "starttime":"11:00",
+        "endtime":"11:40",
+        "daydata":{
+           
+        }
+     },
+     "5":{
+        "starttime":"12:10",
+        "endtime":"12:50",
+        "daydata":{
+           
+        }
+     },
+     "6":{
+        "starttime":"13:00",
+        "endtime":"13:40",
+        "daydata":{
+           
+        }
+     },
+     "7":{
+        "starttime":"13:50",
+        "endtime":"14:30",
+        "daydata":{
+           
+        }
+     },
+     "8":{
+        "starttime":"14:50",
+        "endtime":"15:30",
+        "daydata":{
+           
+        }
+     },
+     "9":{
+        "starttime":"15:35",
+        "endtime":"16:15",
+        "daydata":{
+           
+        }
+     },
+     "10":{
+        "starttime":"16:20",
+        "endtime":"17:00",
+        "daydata":{
+           
+        }
+     }
+  },
+  "breakdata":{
+     
+  }
+}
