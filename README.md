@@ -16,3 +16,7 @@ git clone https://github.com/yachecker/asc-json-ponimatel-online
 2. Navigate to the project directory:
 cd asc-json-ponimatel-online-main
 
+3. Launch as a module:
+py -m asc-json-ponimatel-online
+
+Consider changing directory name or you will be definitely exhausted writing this ultra super duper complex directory name
