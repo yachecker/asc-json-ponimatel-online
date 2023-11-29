@@ -1,16 +1,15 @@
 
 import sys
 sys.path.append('..')
-sys.path.append('./classes')
 import unittest
-from main import parse_timetable
+from . import Parser
 
 
 
 class TestTimetableParser(unittest.TestCase):
   def test_valid_timetable(self):
     # Call the parse_timetable function (without providing direct input)
-    parsed_timetable = parse_timetable(className='7a', subGroup=1)['Monday']
+    parsed_timetable = Parser.parse_timetable(className='7a', subGroup=1)['Monday']
 
     # Expected output after parsing the timetable internally
     expected_output = [
@@ -56,5 +55,4 @@ class TestTimetableParser(unittest.TestCase):
 
   # Add more tests for other scenarios and edge cases
 
-if __name__ == '__main__':
-  unittest.main()
+unittest.main()

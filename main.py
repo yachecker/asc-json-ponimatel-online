@@ -6,6 +6,7 @@ from classes import SchClass, SchCard, SchLesson
 from pprint import pprint
 
 
+
 class Parser:
   @staticmethod
   def parse_timetable(className: str, subGroup: 1 | 2) -> dict:
@@ -53,7 +54,7 @@ class Parser:
       3: 'Wednesday',
       4: 'Thursday',
       5: 'Friday',
-      6: 'Saturday' 
+      6: 'Saturday'
     }
 
     # Replace day numbers with day names in the result
@@ -63,7 +64,7 @@ class Parser:
     pprint(sorted_result_dict)
 
 
-Parser.parse_timetable('12a',1)
+Parser.parse_timetable('12a', 1)
 
 
 """
