@@ -1,6 +1,6 @@
 import sys
 sys.path.append('..')
-from methods import get_primary_data
+from ..methods import get_primary_data
 from .schlesson import SchLesson
 from typing import Type, List, Dict
 PRIMARY_DATA = get_primary_data()

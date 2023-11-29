@@ -1,6 +1,6 @@
 import sys
 sys.path.append('..')
-from methods import get_primary_data
+from ..methods import get_primary_data
 PRIMARY_DATA = get_primary_data()
 
 

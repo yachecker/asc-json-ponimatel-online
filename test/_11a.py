@@ -1,58 +1,81 @@
 
 import sys
-sys.path.append('..')
+# sys.path.append('..')
 import unittest
-from . import Parser
+from ..__main__ import Parser
+
 
 
 
 class TestTimetableParser(unittest.TestCase):
   def test_valid_timetable(self):
     # Call the parse_timetable function (without providing direct input)
-    parsed_timetable = Parser.parse_timetable(className='7a', subGroup=1)['Monday']
+    parsed_timetable = Parser.parse_timetable(className='12c', subGroup=1)['Wednesday']
 
     # Expected output after parsing the timetable internally
-    expected_output = [
-        {
-          'name': 'Кураторский час',
-          'room': '222',
-          'teacher':'Каримова Арайлым',
-          'periods':1
-        },
-        {
-          'name': 'Музыка',
-          'room': '303',
-          'teacher':'Амангельды Айсулу',
-          'periods':1
-        },
-        {
-          'name': 'Информатика',
-          'room': '254',
-          'teacher':'Ахметова Балгын',
-          'periods':2
-        },
-                {
-          'name': 'Физика',
-          'room': '242',
-          'teacher':'Тутебаева Айсулу',
-          'periods':1
-        },
-        {
-          'name': 'Домбыра',
-          'room': '',
-          'teacher':'Токтаган Айтжан',
-          'periods':1
-        },
-        {
-          'name': 'Математика',
-          'room': '223',
-          'teacher':'Джубатканов Куаныш',
-          'periods':1
-        },
-      ]
+    expected_output = [(1,
+                {'group': 1,
+                 'name': 'География',
+                 'periods': 2,
+                 'room': '301',
+                 'teacher': 'Нургалиева Гульжан'}),
+               (1,
+                {'group': 1,
+                 'name': 'Экономика',
+                 'periods': 2,
+                 'room': '155',
+                 'teacher': 'Акшалова Айнаш'}),
+               (1,
+                {'group': 1,
+                 'name': 'Графика',
+                 'periods': 2,
+                 'room': '33P',
+                 'teacher': 'Баудинов Дулат'}),
+               (3,
+                {'group': 1,
+                 'name': 'Химия',
+                 'periods': 2,
+                 'room': '244',
+                 'teacher': 'Уралбаева Карлыгаш'}),
+               (3,
+                {'group': 1,
+                 'name': 'Информатика',
+                 'periods': 2,
+                 'room': '256',
+                 'teacher': 'Есмагамбетова Динара'}),
+               (3,
+                {'group': 1,
+                 'name': 'Физика',
+                 'periods': 2,
+                 'room': '332',
+                 'teacher': 'Шаланова Жанат'}),
+               (3,
+                {'group': 3,
+                 'name': 'Физика',
+                 'periods': 2,
+                 'room': '332',
+                 'teacher': 'Сайлауханов Нуржан'}),
+               (5,
+                {'group': 3,
+                 'name': 'Физкультура',
+                 'periods': 2,
+                 'room': 'Спортзал 3',
+                 'teacher': 'Бектемиров Манарбек'}),
+               (7,
+                {'group': 1,
+                 'name': 'МЭСК: Я1',
+                 'periods': 2,
+                 'room': '301',
+                 'teacher': 'Бешимбаева Калдыкыз'}),
+               (10,
+                {'group': 3,
+                 'name': 'НВ и ТП',
+                 'periods': 1,
+                 'room': [],
+                 'teacher': 'Аубакиров Нуралы'})]
 
-    self.assertEqual(parsed_timetable, expected_output)
+    self.assertEqual(parsed_timetable, expected_output, msg='Everything is stable now... Test ran through successfully')
 
-  # Add more tests for other scenarios and edge cases
-
-unittest.main()
+  # Add more tests fo r other scenarios and edge cases
+if __name__ == '__main__':
+  unittest.main()
