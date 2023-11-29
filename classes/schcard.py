@@ -11,7 +11,8 @@ class SchCard:
     self.day = day
     self.classroom_id = classroom_id[0] if classroom_id else ''
     self.classroom = self.get_rooms_list()[self.classroom_id]
-
+    #if self.day == 3:
+     # print(lessonid)
   def get_rooms_list(self) -> dict:
     rooms_list = PRIMARY_DATA['r']['dbiAccessorRes']['tables'][11]["data_rows"]
     rooms = {}

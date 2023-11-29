@@ -1,12 +1,17 @@
 #from methods import *
 #from translators import *
+import json
 import sys
 sys.path.append('./classes')
 from .classes import SchClass, SchCard, SchLesson
 from pprint import pprint
-
-def govniwe() -> str:
-  print('shit')
+inp_grade, inp_subgroup = '', 1
+# Check if there are at least two arguments (the script name is the first argument)
+if len(sys.argv) >= 3:
+    inp_grade = sys.argv[1]  # First argument
+    inp_subgroup = int(sys.argv[2])  # Second argument
+else:
+    print("Usage: python myscript.py arg1 arg2")
 
 class Parser:
   @staticmethod
@@ -27,11 +32,13 @@ class Parser:
     for card in cards:
       cardsbyday[card.day].append(card)
     result_dict = {}
+    
     for day, cardList in cardsbyday.items():
       periodtuples = []
       for card in cardList:
         lesson = SchLesson(card.lessonid)
         group = int(lesson.group[0])
+
         if group == subGroup or group == 3:
           periodtuples.append((
             int(card.period),
@@ -43,7 +50,8 @@ class Parser:
               'group': group
             }
             ))
-
+          
+      
       periodtuples.sort(key=lambda x: x[0])
       result_dict[day] = periodtuples
 
@@ -64,6 +72,13 @@ class Parser:
     pprint(sorted_result_dict)
 
     return sorted_result_dict
-
-
-Parser.parse_timetable('12c', 1)
+  
+def save_data_to_json(data, file_path):
+    try:
+        with open(file_path, 'w+', encoding='UTF-8') as json_file:
+            json.dump(data, json_file,ensure_ascii=False, indent=4)  # Indent for pretty formatting
+        print(f'Data saved to {file_path}')
+    except Exception as e:
+        print(f'Error saving data to JSON file: {e}')
+save_data_to_json(Parser.parse_timetable(inp_grade,inp_subgroup),r'D:\workspace\dask_backend\data.json')
+#Parser.parse_timetable(inp_grade, inp_subgroup)
