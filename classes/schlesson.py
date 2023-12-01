@@ -28,7 +28,6 @@ class SchLesson:
                 self.group = group.strip().replace(' ', '')
                 self.periods = periods
 
-                # TODO: adapt for 12th grade subject name
                 subjectName = self.get_subjects_list()[self.subject_id]
                 subjects = {
                     'г': 'География',
@@ -41,7 +40,6 @@ class SchLesson:
                 }
                 if 'Стандарт' in subjectName or '12кл_' in subjectName:
                     subjectName = subjects[self.group[-4].lower()]
-                    # TODO: 12th grade profile subject choose plz omg stfu
                     self.group = self.group[-3] + ' группа'
                 match subjectName:
                     case 'М_Мат_12кл':
