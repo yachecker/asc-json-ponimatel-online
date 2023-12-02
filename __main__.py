@@ -13,7 +13,6 @@ if len(sys.argv) >= 3:
 else:
     print("Usage: python myscript.py arg1 arg2")
 
-
 class Parser:
     def __init__(self):
         pass
