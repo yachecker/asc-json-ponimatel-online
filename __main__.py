@@ -15,6 +15,9 @@ else:
 
 
 class Parser:
+    def __init__(self):
+        pass
+
     @staticmethod
     def parse_timetable(className: str, subGroup: 1 | 2) -> dict:
         lessons = SchClass.name(className).get_lessons()
@@ -22,7 +25,7 @@ class Parser:
         for lesson in lessons:
             cards += lesson.get_cards()
 
-        cardsbyday = {
+        cardsharp = {
             1: [],
             2: [],
             3: [],
@@ -31,10 +34,10 @@ class Parser:
             6: []
         }
         for card in cards:
-            cardsbyday[card.day].append(card)
+            cardsharp[card.day].append(card)
         result_dict = {}
 
-        for day, cardList in cardsbyday.items():
+        for day, cardList in cardsharp.items():
             periodtuples = []
             for card in cardList:
                 lesson = SchLesson(card.lessonid)
