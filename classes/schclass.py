@@ -1,17 +1,16 @@
-import sys
+import sys, os
 
-sys.path.append('..')
-from ..methods import get_primary_data
-from .schlesson import SchLesson
+sys.path.insert(0, os.path.abspath(".."))
+from methods import get_primary_data
+from classes.schlesson import SchLesson
 from typing import Type, List, Dict
 
 PRIMARY_DATA = get_primary_data()
 
 
 class SchClass:
-
     @staticmethod
-    def name(classname: str) -> 'SchClass':
+    def name(classname: str) -> "SchClass":
         class_list = SchClass.get_classes_list()
         for k, v in class_list.items():
             if v == classname:
@@ -24,14 +23,14 @@ class SchClass:
 
     @staticmethod
     def get_classes_list(write=False) -> dict:
-        classesList = PRIMARY_DATA['r']['dbiAccessorRes']['tables'][12]["data_rows"]
+        classesList = PRIMARY_DATA["r"]["dbiAccessorRes"]["tables"][12]["data_rows"]
         classes = {}
         for className in classesList:
             id = className["id"]
-            name = className["name"][:className["name"].find('_')].lower()
+            name = className["name"][: className["name"].find("_")].lower()
             classes[id] = name
         if write:
-            with open('./files/classes.txt', 'w+', encoding='UTF-8') as f:
+            with open("./files/classes.txt", "w+", encoding="UTF-8") as f:
                 f.write(str(classes))
         return classes
 
@@ -39,14 +38,14 @@ class SchClass:
         print(f"Class ID: {self.classID}")
         print(f"Class Name: {self.className}")
 
-    def get_lessons(self, write=False) -> List['SchLesson']:
-        lessons = PRIMARY_DATA['r']['dbiAccessorRes']['tables'][18]["data_rows"]
+    def get_lessons(self, write=False) -> List["SchLesson"]:
+        lessons = PRIMARY_DATA["r"]["dbiAccessorRes"]["tables"][18]["data_rows"]
         classLessons = []
         for lesson in lessons:
-            if self.id in lesson['classids']:
-                classLessons.append(SchLesson(lesson['id']))
+            if self.id in lesson["classids"]:
+                classLessons.append(SchLesson(lesson["id"]))
         if write:
-            with open('./files/lessons.txt', 'w+', encoding='UTF-8') as f:
+            with open("./files/lessons.txt", "w+", encoding="UTF-8") as f:
                 f.write(str(classLessons))
         return classLessons
 
