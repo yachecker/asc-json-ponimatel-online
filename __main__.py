@@ -1,14 +1,13 @@
 # from methods import *
 # from translators import *
 import sys, os
-
-sys.path.insert(0, os.path.abspath(".."))
 import json
-from classes.schcard import SchCard
+
+from classes.primary_data import get_last_primary_json
+
+get_last_primary_json()
 from classes.schlesson import SchLesson
 from classes.schclass import SchClass
-
-from pprint import pprint
 
 inp_grade, inp_subgroup = "", 1
 # Check if there are at least two arguments (the script name is the first argument)
@@ -71,25 +70,12 @@ class Parser:
         }
 
         # Print the formatted result dictionary
-        pprint(sorted_result_dict)
+        print(json.dumps(sorted_result_dict, ensure_ascii=False))
 
         return sorted_result_dict
 
 
-def save_data_to_json(data, file_path):
-    try:
-        with open(file_path, "w+", encoding="UTF-8") as json_file:
-            json.dump(
-                data, json_file, ensure_ascii=False, indent=4
-            )  # Indent for pretty formatting
-        # print(f"Data saved to {file_path}")
-    except Exception as e:
-        pass
-        # print(f"Error saving data to JSON file: {e}")
+Parser.parse_timetable(inp_grade, inp_subgroup)
 
 
-save_data_to_json(
-    Parser.parse_timetable(inp_grade, inp_subgroup),
-    r"D:\workspace\dask_backend\data.json",
-)
 # Parser.parse_timetable(inp_grade, inp_subgroup)

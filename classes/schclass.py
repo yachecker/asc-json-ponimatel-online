@@ -1,11 +1,16 @@
 import sys, os
 
-sys.path.insert(0, os.path.abspath(".."))
-from methods import get_primary_data
+# sys.path.insert(0, os.path.abspath(".."))
 from classes.schlesson import SchLesson
 from typing import Type, List, Dict
+import json
 
-PRIMARY_DATA = get_primary_data()
+sys.path.insert(0, os.path.abspath(".."))
+from classes.primary_data import get_last_primary_json
+
+primary_data_json_name: str | None = get_last_primary_json()[1][0]
+with open(os.path.abspath(primary_data_json_name), encoding="UTF-8") as json_data:
+    PRIMARY_DATA = json.load(json_data)
 
 
 class SchClass:
