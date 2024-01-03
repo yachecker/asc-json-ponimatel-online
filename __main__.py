@@ -8,7 +8,10 @@ from classes.primary_data import get_last_primary_json
 get_last_primary_json()
 from classes.schlesson import SchLesson
 from classes.schclass import SchClass
+if not os.path.exists('./classes_json'):
+    os.mkdir('classes_json')
 
+    
 inp_grade, inp_subgroup = "", 1
 # Check if there are at least two arguments (the script name is the first argument)
 if len(sys.argv) >= 3:
